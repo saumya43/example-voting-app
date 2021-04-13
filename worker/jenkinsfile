@@ -18,17 +18,23 @@ pipeline{
         stage('test'){
             steps{
              echo 'running unit tests on worker app'
+             dir('worker'){
+             sh 'mvn clean test'
+             }
             }
         }
         stage('package'){
             steps{
              echo 'packaging worker app'
+             dir ('worker'){
+             sh 'mvn package'
+             }
             }
         }
     }
     post{
         always{
-            echo 'build pipeline for worker is completed..'
+            echo 'Pipeline for worker is completed..'
         }
     }
 }
