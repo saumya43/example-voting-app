@@ -1,0 +1,36 @@
+pipeline{
+    agent any
+
+    tools{
+    NodeJS 'NodeJS8.9.0'
+    }
+
+    stages{
+        stage('build'){
+          when{
+            changeset "**/result/**"
+
+        }
+            steps{
+             echo 'compiling result app'
+             dir('result'){
+                sh 'npm install'
+             }
+            }
+
+        }
+        stage('test'){
+           when{
+changeset "**/result/**"
+        }
+            steps{
+             echo 'running unit tests on result app'
+             dir('result'){
+             sh 'npm install'
+             sh 'npm test'
+             }
+            }
+        }
+        
+        }
+    }
