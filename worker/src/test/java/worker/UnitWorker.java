@@ -1,10 +1,10 @@
 import org.junit.jupiter.api.Test;
- 
+
 class UnitWorker {
- 
+
     @Test
     void sample1() {
- 
+
     }
 
 
@@ -15,6 +15,11 @@ class UnitWorker {
 
     @Test
     void sample3() {
+
+    }
+
+    @Test
+    void sample4() {
 
     }
 
