@@ -2,14 +2,14 @@ pipeline{
     agent {
     docker {
         image 'node:8.13.0-alpine'
-      
+
     }
     }
 
     stages{
         stage('build'){
           when{
-             changeset "**/worker/**"
+             changeset "**/result/**"
 
       }
 
@@ -23,7 +23,7 @@ pipeline{
         }
         stage('test'){
             when{
-              changeset "**/worker/**"
+              changeset "**/result/**"
 
       }
 
