@@ -46,7 +46,7 @@ pipeline{
            agent any
             when{
              changeset "**/result/**"
-
+             branch 'master'
         }
             steps{
              echo 'packaging worker app with docker'
@@ -54,6 +54,7 @@ pipeline{
              docker.withRegistry('https://index.docker.io/v1/', 'dockerlogin'){
              def resultImage = docker.build("saumya043/result:v${env.BUILD_ID}", "./result")
              resultImage.push()
+             workerImage.push("${env.BRANCH_NAME}")
              }
 
             }
